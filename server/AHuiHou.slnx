@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AHuiHou.Api/AHuiHou.Api.csproj" />
+    <Project Path="src/AHuiHou.Application/AHuiHou.Application.csproj" />
+    <Project Path="src/AHuiHou.Domain/AHuiHou.Domain.csproj" />
+    <Project Path="src/AHuiHou.Infrastructure/AHuiHou.Infrastructure.csproj" />
+  </Folder>
+</Solution>
+

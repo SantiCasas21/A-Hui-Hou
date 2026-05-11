@@ -1,0 +1,122 @@
+.form {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.error {
+  background: #FFF0F0;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.areaGroup {
+  border: none;
+}
+
+.areaName {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.tableGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--space-2);
+}
+
+.tableBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-foam);
+  transition: all var(--transition-fast);
+}
+.tableBtn:hover {
+  border-color: var(--color-accent);
+}
+
+.selected {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: white;
+}
+.selected .tableNum { color: white; }
+.selected .capacity { color: rgba(255,255,255,0.8); }
+
+.tableNum {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.capacity {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.outlet {
+  font-size: 0.625rem;
+}
+
+.datetimeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.datetimeInput {
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+}
+.datetimeInput:focus {
+  border-color: var(--color-accent);
+}
+
+.submitBtn {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .datetimeRow {
+    grid-template-columns: 1fr;
+  }
+}

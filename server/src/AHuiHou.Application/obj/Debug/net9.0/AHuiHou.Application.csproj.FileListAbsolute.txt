@@ -1,0 +1,16 @@
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\bin\Debug\net9.0\AHuiHou.Application.deps.json
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\bin\Debug\net9.0\AHuiHou.Application.dll
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\bin\Debug\net9.0\AHuiHou.Application.pdb
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\bin\Debug\net9.0\AHuiHou.Domain.dll
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\bin\Debug\net9.0\AHuiHou.Domain.pdb
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.csproj.AssemblyReference.cache
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.AssemblyInfoInputs.cache
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.AssemblyInfo.cs
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.csproj.CoreCompileInputs.cache
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.sourcelink.json
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou..5D7BF190.Up2Date
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.dll
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\refint\AHuiHou.Application.dll
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\AHuiHou.Application.pdb
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Application\obj\Debug\net9.0\ref\AHuiHou.Application.dll
