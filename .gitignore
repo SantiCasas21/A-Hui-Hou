@@ -1,0 +1,32 @@
+# --- .NET / C# ---
+[Bb]in/
+[Oo]bj/
+out/
+publish/
+*.user
+*.userosscache
+*.sln.docuser
+
+# --- Secretos y Configuración ---
+.env
+appsettings.Development.json
+secrets.json
+
+# --- Docker ---
+.dockerignore
+# Ignorar datos persistentes de la DB en local
+postgres_data/
+
+# --- IDEs (VS Code & Visual Studio) ---
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docuser
+
+# --- Frontend (React) ---
+node_modules/
+build/
+.DS_Store
