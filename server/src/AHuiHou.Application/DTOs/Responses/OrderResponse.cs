@@ -3,7 +3,7 @@ namespace AHuiHou.Application.DTOs.Responses;
 public record OrderResponse(
     Guid OrderId,
     decimal TotalAmount,
-    int PointsEarned,
+    decimal PointsEarned,
     DateTime CreatedAt
 );
 

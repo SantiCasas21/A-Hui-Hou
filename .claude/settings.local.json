@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dotnet add *)"
+      "Bash(dotnet build *)",
+      "Bash(npx tsc *)",
+      "Bash(npx vite *)",
+      "Bash(dotnet ef *)",
+      "PowerShell(dotnet build *)",
+      "PowerShell(Run-Build *)",
+      "PowerShell(Run-Migration *)",
+      "PowerShell(Run-DbUpdate *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\Santiago\\\\Documents\\\\Santiago\\\\Proyectos\\\\a_hui_hou\\\\client\\\\client\"; $result = npx vite build 2>&1; $result | ForEach-Object { $_.ToString\\(\\) }; if \\($LASTEXITCODE -ne 0\\) { Write-Output \"VITE BUILD FAILED\" } else { Write-Output \"VITE BUILD SUCCESS\" })"
     ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
   }
 }

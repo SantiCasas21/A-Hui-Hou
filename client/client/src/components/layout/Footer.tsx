@@ -26,7 +26,7 @@ export function Footer() {
             <MapPin size={18} />
             <div>
               <p className={styles.infoLabel}>Ubicación</p>
-              <p>Calle del Café 42, Madrid</p>
+              <p>Chapinero Alto, Bogotá, Cundinamarca</p>
             </div>
           </div>
         </div>

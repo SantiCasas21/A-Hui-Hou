@@ -17,6 +17,7 @@ public class AHuiHouDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<LoyaltyWallet> LoyaltyWallets => Set<LoyaltyWallet>();
     public DbSet<PointTransaction> PointTransactions => Set<PointTransaction>();
+    public DbSet<Promotion> Promotions => Set<Promotion>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -124,7 +125,7 @@ public class AHuiHouDbContext : DbContext
         {
             e.ToTable("loyalty_wallets");
             e.HasKey(x => x.UserId);
-            e.Property(x => x.Balance).HasDefaultValue(0);
+            e.Property(x => x.Balance).HasColumnType("decimal(10,2)").HasDefaultValue(0m);
             e.Property(x => x.LastUpdate).HasDefaultValueSql("CURRENT_TIMESTAMP");
             e.HasOne(x => x.User)
                 .WithOne(u => u.LoyaltyWallet)
@@ -136,12 +137,26 @@ public class AHuiHouDbContext : DbContext
         {
             e.ToTable("point_transactions");
             e.HasKey(x => x.Id);
-            e.Property(x => x.Amount).IsRequired();
+            e.Property(x => x.Amount).HasColumnType("decimal(10,2)").IsRequired();
             e.Property(x => x.TransactionType).HasMaxLength(50);
             e.Property(x => x.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             e.HasOne(x => x.Wallet)
                 .WithMany(w => w.PointTransactions)
                 .HasForeignKey(x => x.WalletId);
+        });
+
+        // Promotion
+        modelBuilder.Entity<Promotion>(e =>
+        {
+            e.ToTable("promotions");
+            e.HasKey(x => x.Id);
+            e.Property(x => x.Title).IsRequired().HasMaxLength(200);
+            e.Property(x => x.Description).IsRequired().HasMaxLength(500);
+            e.Property(x => x.ImageUrl).HasMaxLength(500);
+            e.Property(x => x.DiscountCode).HasMaxLength(50);
+            e.Property(x => x.StartDate).IsRequired();
+            e.Property(x => x.EndDate).IsRequired();
+            e.Property(x => x.IsActive).HasDefaultValue(true);
         });
 
         // Seed data
@@ -151,15 +166,15 @@ public class AHuiHouDbContext : DbContext
     private static void SeedData(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<MembershipType>().HasData(
-            new MembershipType { Id = 1, Name = "VIP", DiscountRate = 15.00m, MonthlyFee = 99.99m },
-            new MembershipType { Id = 2, Name = "Diamante", DiscountRate = 10.00m, MonthlyFee = 59.99m },
-            new MembershipType { Id = 3, Name = "Estudiante", DiscountRate = 5.00m, MonthlyFee = 29.99m }
+            new MembershipType { Id = 1, Name = "VIP", DiscountRate = 15.00m, MonthlyFee = 149900m },
+            new MembershipType { Id = 2, Name = "Diamante", DiscountRate = 10.00m, MonthlyFee = 89900m },
+            new MembershipType { Id = 3, Name = "Estudiante", DiscountRate = 5.00m, MonthlyFee = 39900m }
         );
 
         modelBuilder.Entity<Category>().HasData(
-            new Category { Id = 1, Name = "Bebidas", Description = "Café, té, smoothies y más" },
-            new Category { Id = 2, Name = "Comida", Description = "Sándwiches, pasteles y snacks" },
-            new Category { Id = 3, Name = "Coworking", Description = "Acceso a espacios de trabajo" }
+            new Category { Id = 1, Name = "Bebidas", Description = "Café de especialidad, tés, frappés y más" },
+            new Category { Id = 2, Name = "Comida", Description = "Sándwiches artesanales, repostería y bowls" },
+            new Category { Id = 3, Name = "Coworking", Description = "Planes de acceso a espacios de trabajo" }
         );
 
         modelBuilder.Entity<Area>().HasData(
@@ -179,13 +194,167 @@ public class AHuiHouDbContext : DbContext
         );
 
         modelBuilder.Entity<Product>().HasData(
-            new Product { Id = 1, CategoryId = 1, Name = "Espresso", Price = 3.50m, PointsAwarded = 0 },
-            new Product { Id = 2, CategoryId = 1, Name = "Cappuccino", Price = 4.50m, PointsAwarded = 0 },
-            new Product { Id = 3, CategoryId = 1, Name = "Latte Macchiato", Price = 5.00m, PointsAwarded = 0 },
-            new Product { Id = 4, CategoryId = 2, Name = "Sándwich de Pollo", Price = 8.50m, PointsAwarded = 0 },
-            new Product { Id = 5, CategoryId = 2, Name = "Croissant", Price = 3.50m, PointsAwarded = 0 },
-            new Product { Id = 6, CategoryId = 3, Name = "Coworking - Hora", Price = 5.00m, PointsAwarded = 0 },
-            new Product { Id = 7, CategoryId = 3, Name = "Coworking - Día", Price = 25.00m, PointsAwarded = 0 }
+            // --- Bebidas calientes ---
+            new Product { Id = 1, CategoryId = 1, Name = "Espresso", Price = 5500m, PointsAwarded = 0 },
+            new Product { Id = 2, CategoryId = 1, Name = "Cappuccino", Price = 7500m, PointsAwarded = 0 },
+            new Product { Id = 3, CategoryId = 1, Name = "Latte Macchiato", Price = 9000m, PointsAwarded = 0 },
+            new Product { Id = 4, CategoryId = 1, Name = "Americano", Price = 5000m, PointsAwarded = 0 },
+            new Product { Id = 5, CategoryId = 1, Name = "Prensa Francesa", Price = 8500m, PointsAwarded = 0 },
+            new Product { Id = 6, CategoryId = 1, Name = "Mocaccino", Price = 9500m, PointsAwarded = 0 },
+            new Product { Id = 7, CategoryId = 1, Name = "Té Chai Latte", Price = 8000m, PointsAwarded = 0 },
+            // --- Bebidas frías ---
+            new Product { Id = 8, CategoryId = 1, Name = "Cold Brew", Price = 10000m, PointsAwarded = 0 },
+            new Product { Id = 9, CategoryId = 1, Name = "Frappé de Café", Price = 12500m, PointsAwarded = 0 },
+            new Product { Id = 10, CategoryId = 1, Name = "Matcha Latte", Price = 11000m, PointsAwarded = 0 },
+            // --- Comida ---
+            new Product { Id = 11, CategoryId = 2, Name = "Croissant Artesanal", Price = 7000m, PointsAwarded = 0 },
+            new Product { Id = 12, CategoryId = 2, Name = "Torta de Almojábana", Price = 8500m, PointsAwarded = 0 },
+            new Product { Id = 13, CategoryId = 2, Name = "Sándwich de Pollo", Price = 18000m, PointsAwarded = 0 },
+            new Product { Id = 14, CategoryId = 2, Name = "Sándwich Artesanal", Price = 20000m, PointsAwarded = 0 },
+            new Product { Id = 15, CategoryId = 2, Name = "Bagel con Salmón", Price = 22000m, PointsAwarded = 0 },
+            new Product { Id = 16, CategoryId = 2, Name = "Ensalada César", Price = 16500m, PointsAwarded = 0 },
+            new Product { Id = 17, CategoryId = 2, Name = "Bowl de Frutas", Price = 15000m, PointsAwarded = 0 },
+            new Product { Id = 18, CategoryId = 2, Name = "Pastel de Chocolate", Price = 12000m, PointsAwarded = 0 },
+            // --- Coworking ---
+            new Product { Id = 19, CategoryId = 3, Name = "Coworking - Hora", Price = 8000m, PointsAwarded = 0 },
+            new Product { Id = 20, CategoryId = 3, Name = "Coworking - Medio Día", Price = 25000m, PointsAwarded = 0 },
+            new Product { Id = 21, CategoryId = 3, Name = "Coworking - Día Completo", Price = 45000m, PointsAwarded = 0 },
+            new Product { Id = 22, CategoryId = 3, Name = "Coworking - Semana", Price = 180000m, PointsAwarded = 0 }
+        );
+
+        modelBuilder.Entity<Promotion>().HasData(
+            new Promotion
+            {
+                Id = 1,
+                Title = "Combo Desayuno",
+                Description = "Café Americano + Croissant artesanal por solo $10.000. Válido hasta las 11am.",
+                ImageUrl = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800",
+                DiscountCode = "DESAYUNO10K",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 2,
+                Title = "After Office 2x1",
+                Description = "2x1 en Cappuccinos de 4pm a 6pm. Trae a tu colega y solo pagas uno.",
+                ImageUrl = "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=800",
+                DiscountCode = "AFTER2X1",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 3,
+                Title = "Lunes de Latte",
+                Description = "Todos los lunes, 20% de descuento en cualquier latte. Tu semana empieza mejor.",
+                ImageUrl = "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800",
+                DiscountCode = "LUNESLATTE",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 4,
+                Title = "Pase Coworking Día",
+                Description = "Día completo de coworking por solo $35.000 (antes $45.000). Café ilimitado incluido.",
+                ImageUrl = "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
+                DiscountCode = "COWORK35K",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 5,
+                Title = "Primer Café Gratis",
+                Description = "Regístrate y recibe un espresso o americano de bienvenida totalmente gratis.",
+                ImageUrl = "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800",
+                DiscountCode = "BIENVENIDO",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 6,
+                Title = "Plan Estudiante",
+                Description = "30% de descuento en planes de coworking con carnet vigente. WiFi + café ilimitado.",
+                ImageUrl = "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+                DiscountCode = "ESTUDIANTE30",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 7,
+                Title = "Té + Pastelería 50% Off",
+                Description = "Cualquier té + pastry a mitad de precio de 3pm a 5pm. La hora del té perfecta.",
+                ImageUrl = "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800",
+                DiscountCode = "TEATIME50",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 8,
+                Title = "Sala para Equipos",
+                Description = "4 horas de coworking en sala privada + 4 cafés por solo $80.000. Ideal para brainstorms.",
+                ImageUrl = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
+                DiscountCode = "TEAM80K",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 9,
+                Title = "Sábados de Origen Único",
+                Description = "Cada sábado, prueba un café de origen colombiano con 15% de descuento. Conoce nuestro café.",
+                ImageUrl = "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800",
+                DiscountCode = "SABADO15",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 10,
+                Title = "Amigo Referido",
+                Description = "Trae a un amigo nuevo y ambos ganan 100 puntos de lealtad extra en su primera compra.",
+                ImageUrl = "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800",
+                DiscountCode = "AMIGO100",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 11,
+                Title = "Café & Libro",
+                Description = "Jueves: toma un libro de nuestra biblioteca y recibe un espresso cortesía. Lectura + café.",
+                ImageUrl = "https://images.unsplash.com/photo-1513475382585-d06e58bc1ae2?w=800",
+                DiscountCode = null,
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            },
+            new Promotion
+            {
+                Id = 12,
+                Title = "Pack Repostería x3",
+                Description = "3 piezas de pastelería + 2 americanos por solo $22.000. Perfecto para compartir.",
+                ImageUrl = "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800",
+                DiscountCode = "PASTRY22K",
+                StartDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDate = new DateTime(2026, 12, 31, 23, 59, 59, DateTimeKind.Utc),
+                IsActive = true
+            }
         );
     }
 }

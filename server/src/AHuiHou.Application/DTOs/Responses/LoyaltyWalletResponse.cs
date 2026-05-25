@@ -1,7 +1,7 @@
 namespace AHuiHou.Application.DTOs.Responses;
 
 public record LoyaltyWalletResponse(
-    int Balance,
+    decimal Balance,
     DateTime LastUpdate
 );
 

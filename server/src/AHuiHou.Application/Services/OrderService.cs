@@ -37,8 +37,8 @@ public class OrderService : IOrderService
                 totalAmount += product.Price * item.Quantity;
             }
 
-            // Points = 5% of total purchase, rounded down
-            int pointsEarned = (int)Math.Floor(totalAmount * 0.05m);
+            // Points = 5% of total purchase (with decimals)
+            decimal pointsEarned = totalAmount * 0.05m;
 
             var wallet = await _unitOfWork.LoyaltyWallets.GetByUserIdAsync(userId, cancellationToken);
             if (wallet is null)

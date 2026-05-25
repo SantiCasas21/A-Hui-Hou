@@ -6,6 +6,6 @@ public record UserResponse(
     string LastName,
     string Email,
     DateTime CreatedAt,
-    int LoyaltyBalance
+    decimal LoyaltyBalance
 );
 

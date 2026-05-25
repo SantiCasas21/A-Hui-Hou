@@ -1,6 +1,16 @@
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('es-ES', {
+  return new Intl.NumberFormat('es-CO', {
     style: 'currency',
-    currency: 'EUR',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+export function formatPoints(amount: number): string {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'decimal',
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
   }).format(amount);
 }

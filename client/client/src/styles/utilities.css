@@ -1,11 +1,42 @@
+/* ===== Flex Utilities ===== */
 .flex-center { display: flex; align-items: center; justify-content: center; }
 .flex-between { display: flex; align-items: center; justify-content: space-between; }
 .flex-col { display: flex; flex-direction: column; }
+.inline-flex { display: inline-flex; align-items: center; }
+
+/* ===== Gap Utilities ===== */
 .gap-1 { gap: var(--space-1); }
 .gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
 .gap-4 { gap: var(--space-4); }
 .gap-6 { gap: var(--space-6); }
 .gap-8 { gap: var(--space-8); }
+
+/* ===== Text Utilities ===== */
 .text-center { text-align: center; }
 .text-muted { color: var(--color-text-muted); }
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: 1.125rem; }
+.font-bold { font-weight: 700; }
+.font-heading { font-family: var(--font-heading); }
+
+/* ===== Sizing ===== */
 .w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* ===== Glass Effect ===== */
+.glass { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); }
+
+/* ===== Interactive ===== */
+.hover-lift { transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+.hover-lift:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+.hover-glow { transition: box-shadow var(--transition-fast); }
+.hover-glow:hover { box-shadow: var(--shadow-glow); }
+
+/* ===== Decorative ===== */
+.rounded-xl { border-radius: var(--radius-xl); }
+.overflow-hidden { overflow: hidden; }
+.bg-surface { background: var(--color-surface); }
+.bg-muted { background: var(--color-muted); }
+.bg-primary-light { background: var(--color-primary-light); }

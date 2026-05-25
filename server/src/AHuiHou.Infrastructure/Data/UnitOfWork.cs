@@ -1,3 +1,4 @@
+using AHuiHou.Domain.Entities;
 using AHuiHou.Domain.Interfaces;
 using AHuiHou.Infrastructure.Data;
 using AHuiHou.Infrastructure.Repositories;
@@ -20,6 +21,8 @@ public class UnitOfWork : IUnitOfWork
         PointTransactions = new PointTransactionRepository(context);
         MembershipTypes = new MembershipTypeRepository(context);
         Tables = new TableRepository(context);
+        Promotions = new Repository<Promotion>(context);
+        Areas = new Repository<Area>(context);
     }
 
     public IReservationRepository Reservations { get; }
@@ -29,6 +32,8 @@ public class UnitOfWork : IUnitOfWork
     public IPointTransactionRepository PointTransactions { get; }
     public IMembershipTypeRepository MembershipTypes { get; }
     public ITableRepository Tables { get; }
+    public IRepository<Promotion> Promotions { get; }
+    public IRepository<Area> Areas { get; }
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         => await _context.SaveChangesAsync(cancellationToken);

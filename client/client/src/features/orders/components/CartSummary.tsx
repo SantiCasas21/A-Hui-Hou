@@ -1,5 +1,5 @@
 import { useCart } from '@/core/hooks/useCart';
-import { formatCurrency } from '@/core/utils/formatCurrency';
+import { formatCurrency, formatPoints } from '@/core/utils/formatCurrency';
 import styles from './CartSummary.module.css';
 
 export function CartSummary() {
@@ -24,7 +24,7 @@ export function CartSummary() {
         <span>Total</span>
         <span>{formatCurrency(subtotal)}</span>
       </div>
-      <p className={styles.points}>Ganarás aproximadamente {Math.floor(subtotal * 0.05)} puntos con esta compra.</p>
+      <p className={styles.points}>Ganarás aproximadamente {formatPoints(subtotal * 0.05)} puntos con esta compra.</p>
     </div>
   );
 }

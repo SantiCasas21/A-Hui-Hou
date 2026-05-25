@@ -1,5 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-import { formatCurrency } from '@/core/utils/formatCurrency';
+import { formatCurrency, formatPoints } from '@/core/utils/formatCurrency';
 import { formatDate } from '@/core/utils/formatDate';
 import { Button } from '@/components/ui/Button';
 import type { OrderResult } from '@/core/types/models';
@@ -29,7 +29,7 @@ export default function OrderConfirmation() {
             </div>
             <div className={styles.detail}>
               <span>Puntos ganados</span>
-              <strong className={styles.points}>+{order.pointsEarned} pts</strong>
+              <strong className={styles.points}>+{formatPoints(order.pointsEarned)} pts</strong>
             </div>
             <div className={styles.detail}>
               <span>Fecha</span>

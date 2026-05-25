@@ -16,3 +16,5 @@ C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infr
 C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infrastructure\obj\Debug\net9.0\refint\AHuiHou.Infrastructure.dll
 C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infrastructure\obj\Debug\net9.0\AHuiHou.Infrastructure.pdb
 C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infrastructure\obj\Debug\net9.0\ref\AHuiHou.Infrastructure.dll
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infrastructure\bin\Debug\net9.0\AHuiHou.Infrastructure.runtimeconfig.json
+C:\Users\Santiago\Documents\Santiago\Proyectos\a_hui_hou\server\src\AHuiHou.Infrastructure\obj\Debug\net9.0\AHuiHou.Infrastructure.genruntimeconfig.cache

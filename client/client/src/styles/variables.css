@@ -1,40 +1,48 @@
 :root {
-  /* === Coffee Browns === */
-  --color-espresso: #2C1A0E;
-  --color-coffee: #4A3222;
-  --color-mocha: #6B4D3C;
-  --color-latte: #C4A88B;
-  --color-cream: #F5EDE3;
-  --color-foam: #FDFAF6;
-
-  /* === Botanical Greens === */
-  --color-olive: #5B6C3A;
-  --color-sage: #8FA07A;
-  --color-moss: #6A7B4D;
-  --color-fern: #A3B58A;
-
-  /* === Warm Wood Tones === */
-  --color-walnut: #7B5B3A;
-  --color-oak: #B8956A;
-  --color-maple: #D4B896;
+  /* === New Premium Palette (oklch) === */
+  --palette-primary: oklch(0.45 0.12 165);    /* Deep green #2B7C59 */
+  --palette-secondary: oklch(0.65 0.08 145);  /* Soft green #7AA77A */
+  --palette-accent: oklch(0.42 0.1 200);      /* Deep teal-blue #2B587D */
+  --palette-muted: oklch(0.88 0.02 80);       /* Warm beige #D6C5B2 */
+  --palette-bg: oklch(0.98 0.01 120);         /* Light cream-beige */
+  --palette-surface: oklch(1 0 0);            /* Pure white */
+  --palette-dark: oklch(0.22 0.04 165);       /* Very dark green */
+  --palette-gold: oklch(0.72 0.12 85);        /* Warm gold accent */
 
   /* === Semantic Mappings === */
-  --color-primary: var(--color-espresso);
-  --color-primary-light: var(--color-coffee);
-  --color-primary-lighter: var(--color-mocha);
-  --color-secondary: var(--color-cream);
-  --color-accent: var(--color-olive);
-  --color-accent-light: var(--color-sage);
-  --color-bg: var(--color-foam);
-  --color-surface: #FFFFFF;
-  --color-text: #1A1A1A;
-  --color-text-muted: var(--color-mocha);
-  --color-text-inverse: var(--color-foam);
-  --color-border: var(--color-latte);
-  --color-success: #3D7A41;
-  --color-error: #B33939;
-  --color-warning: #C78A3C;
-  --color-overlay: rgba(44, 26, 14, 0.6);
+  --color-primary: var(--palette-primary);
+  --color-primary-hover: oklch(0.38 0.12 165);
+  --color-primary-light: oklch(0.92 0.03 165);
+  --color-secondary: var(--palette-secondary);
+  --color-secondary-light: oklch(0.85 0.05 145);
+  --color-accent: var(--palette-accent);
+  --color-accent-hover: oklch(0.35 0.10 200);
+  --color-accent-light: oklch(0.88 0.03 200);
+  --color-muted: var(--palette-muted);
+  --color-bg: var(--palette-bg);
+  --color-surface: var(--palette-surface);
+  --color-dark: var(--palette-dark);
+  --color-gold: var(--palette-gold);
+
+  /* === Text === */
+  --color-text: oklch(0.15 0.02 165);
+  --color-text-muted: oklch(0.45 0.02 140);
+  --color-text-inverse: oklch(0.98 0.01 120);
+  --color-text-on-primary: oklch(1 0 0);
+
+  /* === Borders === */
+  --color-border: oklch(0.85 0.02 90);
+  --color-border-light: oklch(0.92 0.01 90);
+
+  /* === Feedback === */
+  --color-success: oklch(0.55 0.14 155);
+  --color-error: oklch(0.50 0.18 25);
+  --color-warning: oklch(0.70 0.15 80);
+
+  /* === Glass Effect === */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(16px);
 
   /* === Typography === */
   --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -55,21 +63,24 @@
   --space-24: 6rem;
 
   /* === Borders & Radius === */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 9999px;
 
-  /* === Shadows (warm-tinted) === */
-  --shadow-sm: 0 1px 2px rgba(44, 26, 14, 0.08);
-  --shadow-md: 0 4px 12px rgba(44, 26, 14, 0.12);
-  --shadow-lg: 0 8px 24px rgba(44, 26, 14, 0.16);
+  /* === Shadows (warm, premium) === */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.09), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 24px rgba(43, 124, 89, 0.15);
 
   /* === Transitions === */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  --transition-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 450ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* === Layout === */
   --max-width: 1200px;

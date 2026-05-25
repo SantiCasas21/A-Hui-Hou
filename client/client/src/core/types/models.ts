@@ -73,3 +73,23 @@ export interface User {
   firstName: string;
   lastName: string;
 }
+
+export interface Promotion {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string | null;
+  discountCode: string | null;
+  startDate: string;
+  endDate: string;
+  isActive: boolean;
+}
+
+export interface AreaInfo {
+  id: number;
+  name: string;
+  isQuietZone: boolean;
+  tableCount: number;
+  hasWifi: boolean;
+  hasOutlets: boolean;
+}

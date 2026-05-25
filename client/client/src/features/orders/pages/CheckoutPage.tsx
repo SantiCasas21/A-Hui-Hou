@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/Button';
 import { CartItemRow } from '../components/CartItem';
 import { CartSummary } from '../components/CartSummary';
 import { createOrder } from '../api';
+import { formatCurrency } from '@/core/utils/formatCurrency';
 import { ApiClientError } from '@/core/api/client';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -85,7 +86,7 @@ export default function CheckoutPage() {
               isLoading={isSubmitting}
               onClick={handleSubmit}
             >
-              Confirmar pedido — {subtotal.toFixed(2).replace('.', ',')} €
+              Confirmar pedido — {formatCurrency(subtotal)}
             </Button>
           </div>
         </div>

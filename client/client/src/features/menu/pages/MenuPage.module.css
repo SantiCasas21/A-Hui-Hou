@@ -1,25 +1,13 @@
 .page {
-  padding-top: var(--space-12);
-  padding-bottom: var(--space-16);
-}
-
-.title {
-  text-align: center;
-  margin-bottom: var(--space-3);
-}
-
-.subtitle {
-  text-align: center;
-  color: var(--color-text-muted);
-  font-size: 1.0625rem;
-  margin-bottom: var(--space-12);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-20);
 }
 
 .error {
   text-align: center;
   color: var(--color-error);
   padding: var(--space-4);
-  background-color: #FFF0F0;
+  background: oklch(0.95 0.02 25);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-8);
 }

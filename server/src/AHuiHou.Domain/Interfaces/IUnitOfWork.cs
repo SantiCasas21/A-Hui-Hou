@@ -1,4 +1,4 @@
-using AHuiHou.Domain.Interfaces;
+using AHuiHou.Domain.Entities;
 
 namespace AHuiHou.Domain.Interfaces;
 
@@ -11,6 +11,8 @@ public interface IUnitOfWork : IDisposable
     IPointTransactionRepository PointTransactions { get; }
     IMembershipTypeRepository MembershipTypes { get; }
     ITableRepository Tables { get; }
+    IRepository<Promotion> Promotions { get; }
+    IRepository<Area> Areas { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     Task BeginTransactionAsync(CancellationToken cancellationToken = default);
     Task CommitTransactionAsync(CancellationToken cancellationToken = default);

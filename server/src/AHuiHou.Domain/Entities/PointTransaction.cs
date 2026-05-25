@@ -6,7 +6,7 @@ public class PointTransaction
 {
     public Guid Id { get; set; }
     public Guid WalletId { get; set; }
-    public int Amount { get; set; }
+    public decimal Amount { get; set; }
     public string TransactionType { get; set; } = Enums.TransactionType.Purchase.ToString();
     public DateTime CreatedAt { get; set; }
 

@@ -2,8 +2,11 @@ import { useApi } from '@/core/hooks/useApi';
 import { apiClient } from '@/core/api/client';
 import type { UserProfile } from '@/core/types/models';
 import { formatDate } from '@/core/utils/formatDate';
+import { formatPoints } from '@/core/utils/formatCurrency';
+import { LoyaltyProgress } from '@/features/home/components/LoyaltyProgress';
 import { Link } from 'react-router-dom';
-import { User, Star, Clock, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { User, Star, Clock, ArrowRight, CalendarDays, ShoppingBag } from 'lucide-react';
 import styles from './DashboardPage.module.css';
 
 export default function DashboardPage() {
@@ -15,7 +18,7 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className={`container ${styles.page}`}>
-        <p className={styles.msg}>Cargando perfil...</p>
+        <p className="state-loading">Cargando perfil...</p>
       </div>
     );
   }
@@ -23,53 +26,73 @@ export default function DashboardPage() {
   if (error || !profile) {
     return (
       <div className={`container ${styles.page}`}>
-        <p className={styles.error}>Error al cargar el perfil: {error}</p>
+        <p className="state-error">Error al cargar el perfil: {error}</p>
       </div>
     );
   }
 
   return (
     <div className={`container ${styles.page}`}>
-      <h1 className={styles.title}>Mi cuenta</h1>
+      <div className="section-header" style={{ textAlign: 'left', maxWidth: 'none', marginBottom: 'var(--space-10)' }}>
+        <span className="section-eyebrow">Mi cuenta</span>
+        <h1>¡Hola, {profile.firstName}!</h1>
+      </div>
 
       <div className={styles.grid}>
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
+        <motion.div
+          className="card-premium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+        >
+          <div className="inline-flex gap-3" style={{ marginBottom: 'var(--space-5)', color: 'var(--color-primary)' }}>
             <User size={20} />
-            <h2>Perfil</h2>
+            <h2 style={{ fontSize: '1.125rem' }}>Perfil</h2>
           </div>
-          <div className={styles.cardBody}>
-            <p><strong>{profile.firstName} {profile.lastName}</strong></p>
-            <p className={styles.muted}>{profile.email}</p>
-            <p className={styles.muted}>Miembro desde {formatDate(profile.createdAt)}</p>
-          </div>
-        </div>
+          <p><strong>{profile.firstName} {profile.lastName}</strong></p>
+          <p className="text-muted">{profile.email}</p>
+          <p className="text-muted" style={{ fontSize: '0.875rem' }}>Miembro desde {formatDate(profile.createdAt)}</p>
+        </motion.div>
 
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
+        <motion.div
+          className="card-premium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="inline-flex gap-3" style={{ marginBottom: 'var(--space-5)', color: 'var(--color-primary)' }}>
             <Star size={20} />
-            <h2>Puntos de lealtad</h2>
+            <h2 style={{ fontSize: '1.125rem' }}>Puntos de lealtad</h2>
           </div>
-          <div className={styles.cardBody}>
-            <p className={styles.points}>{profile.loyaltyBalance} pts</p>
-            <Link to="/loyalty" className={styles.cardLink}>
-              Ver historial <ArrowRight size={14} />
+          <p className={styles.pointsValue}>{formatPoints(profile.loyaltyBalance)} pts</p>
+          <Link to="/loyalty" className="inline-flex gap-1" style={{ fontWeight: 600, fontSize: '0.9375rem' }}>
+            Ver historial <ArrowRight size={14} />
+          </Link>
+        </motion.div>
+
+        <motion.div
+          className="card-premium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          <div className="inline-flex gap-3" style={{ marginBottom: 'var(--space-5)', color: 'var(--color-primary)' }}>
+            <Clock size={20} />
+            <h2 style={{ fontSize: '1.125rem' }}>Acciones rápidas</h2>
+          </div>
+          <div className={styles.quickActions}>
+            <Link to="/reservations" className={styles.quickLink}>
+              <CalendarDays size={16} /> Mis reservas <ArrowRight size={14} />
+            </Link>
+            <Link to="/menu" className={styles.quickLink}>
+              <ShoppingBag size={16} /> Hacer un pedido <ArrowRight size={14} />
             </Link>
           </div>
-        </div>
+        </motion.div>
+      </div>
 
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <Clock size={20} />
-            <h2>Acciones rápidas</h2>
-          </div>
-          <div className={styles.cardBody}>
-            <div className={styles.quickActions}>
-              <Link to="/reservations" className={styles.cardLink}>Mis reservas <ArrowRight size={14} /></Link>
-              <Link to="/menu" className={styles.cardLink}>Hacer un pedido <ArrowRight size={14} /></Link>
-            </div>
-          </div>
-        </div>
+      <div className={styles.loyaltySection}>
+        <LoyaltyProgress balance={profile.loyaltyBalance} />
       </div>
     </div>
   );

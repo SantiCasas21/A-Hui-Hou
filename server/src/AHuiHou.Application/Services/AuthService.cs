@@ -46,7 +46,7 @@ public class AuthService : IAuthService
         var wallet = new LoyaltyWallet
         {
             UserId = user.Id,
-            Balance = 0,
+            Balance = 0m,
             LastUpdate = DateTime.UtcNow
         };
 

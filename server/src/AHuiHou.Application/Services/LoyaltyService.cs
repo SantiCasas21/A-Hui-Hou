@@ -33,7 +33,7 @@ public class LoyaltyService : ILoyaltyService
     {
         var wallet = await _unitOfWork.LoyaltyWallets.GetByUserIdAsync(userId, cancellationToken);
         if (wallet is null || wallet.Balance < request.Points)
-            return Result<LoyaltyWalletResponse>.Failure("Insufficient points balance", "INSUFFICIENT_POINTS");
+            return Result<LoyaltyWalletResponse>.Failure("Saldo de puntos insuficiente", "INSUFFICIENT_POINTS");
 
         wallet.Balance -= request.Points;
         wallet.LastUpdate = DateTime.UtcNow;

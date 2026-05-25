@@ -2,9 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(253, 250, 246, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
   height: var(--header-height);
 }
 
@@ -20,7 +21,7 @@
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-primary);
 }
@@ -49,13 +50,13 @@
 }
 .navLink:hover {
   color: var(--color-primary);
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-primary);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .cartBtn {
@@ -66,7 +67,7 @@
   transition: background-color var(--transition-fast);
 }
 .cartBtn:hover {
-  background-color: var(--color-cream);
+  background-color: var(--color-primary-light);
 }
 
 .badge {
@@ -101,7 +102,7 @@
   transition: background-color var(--transition-fast);
 }
 .userBtn:hover {
-  background-color: var(--color-cream);
+  background-color: var(--color-primary-light);
 }
 
 .userName {
@@ -117,7 +118,7 @@
 }
 .logoutBtn:hover {
   color: var(--color-error);
-  background-color: var(--color-cream);
+  background-color: oklch(0.94 0.02 25);
 }
 
 .authLinks {
@@ -131,7 +132,6 @@
     display: block;
     z-index: 101;
   }
-
   .nav {
     position: fixed;
     top: 0;
@@ -142,27 +142,21 @@
     align-items: flex-start;
     gap: var(--space-6);
     padding: calc(var(--header-height) + var(--space-4)) var(--space-6) var(--space-6);
-    background-color: var(--color-foam);
-    box-shadow: var(--shadow-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-xl);
     transition: right var(--transition-base);
   }
-
-  .navOpen {
-    right: 0;
-  }
-
+  .navOpen { right: 0; }
   .actions {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-4);
     width: 100%;
   }
-
   .authLinks {
     flex-direction: column;
     width: 100%;
   }
-
   .userMenu {
     flex-direction: column;
     align-items: flex-start;

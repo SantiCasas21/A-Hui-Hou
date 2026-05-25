@@ -1,0 +1,1 @@
+function e(e){return new Date(e).toLocaleDateString(`es-ES`,{day:`numeric`,month:`long`,year:`numeric`})}function t(e){return new Date(e).toLocaleString(`es-ES`,{day:`numeric`,month:`long`,year:`numeric`,hour:`2-digit`,minute:`2-digit`})}function n(e){let t=e.getTimezoneOffset();return new Date(e.getTime()-t*6e4).toISOString().slice(0,16)}export{t as n,n as r,e as t};

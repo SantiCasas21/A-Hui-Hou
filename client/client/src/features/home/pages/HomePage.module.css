@@ -1,78 +1,63 @@
 .highlights {
   padding: var(--space-20) 0;
-}
-
-.sectionTitle {
-  text-align: center;
-  margin-bottom: var(--space-12);
+  background: var(--color-bg);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8);
-}
-
-.card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
-}
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  gap: var(--space-6);
 }
 
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background-color: var(--color-cream);
-  color: var(--color-accent);
-  margin-bottom: var(--space-5);
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  margin: 0 auto var(--space-5);
 }
 
-.card h3 {
+.grid h3 {
   font-size: 1.15rem;
   margin-bottom: var(--space-2);
+  color: var(--color-primary);
 }
 
-.card p {
+.grid p {
   color: var(--color-text-muted);
   font-size: 0.9375rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .cta {
-  padding: var(--space-20) 0;
-  background-color: var(--color-cream);
+  padding: var(--space-24) 0;
+  background: linear-gradient(160deg, var(--palette-dark), var(--palette-primary));
+  color: var(--color-text-inverse);
 }
 
 .ctaTitle {
+  color: var(--color-text-inverse);
   margin-bottom: var(--space-4);
 }
 
 .ctaText {
-  color: var(--color-text-muted);
+  color: oklch(0.85 0.02 120);
   font-size: 1.125rem;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.ctaLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-weight: 600;
-  font-size: 1.0625rem;
-  color: var(--color-accent);
-}
-.ctaLink:hover {
-  color: var(--color-primary);
+.ctaActions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
