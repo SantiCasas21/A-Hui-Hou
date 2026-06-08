@@ -16,6 +16,7 @@ public class ProductsController : ControllerBase
     public ProductsController(IProductService productService) => _productService = productService;
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<ApiResponse<IEnumerable<ProductResponse>>>> GetAll()
     {
         var result = await _productService.GetAllAsync();

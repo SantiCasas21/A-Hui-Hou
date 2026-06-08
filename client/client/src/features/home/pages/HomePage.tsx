@@ -10,7 +10,7 @@ import styles from './HomePage.module.css';
 const highlights = [
   { icon: <Star size={24} />, title: 'Café de Especialidad', text: 'Granos seleccionados de origen único, tostados localmente.' },
   { icon: <Clock size={24} />, title: 'Coworking Flexible', text: 'Espacios con WiFi rápido. Paga por hora, medio día o día completo.' },
-  { icon: <Wifi size={24} />, title: 'Programa de Lealtad', text: 'Acumula 5% en puntos por cada compra y canjéalos por café gratis.' },
+  { icon: <Wifi size={24} />, title: 'Programa de Lealtad', text: 'Acumula 0.5% en puntos por cada compra y canjéalos por café gratis.' },
 ];
 
 export default function HomePage() {

@@ -6,11 +6,17 @@ publish/
 *.user
 *.userosscache
 *.sln.docuser
+*.suo
+*.user
+*.userosscache
+*.sln.docuser
 
 # --- Secretos y Configuración ---
 .env
 appsettings.Development.json
 secrets.json
+.claude/
+.gemini/
 
 # --- Docker ---
 .dockerignore
@@ -21,12 +27,26 @@ postgres_data/
 .vs/
 .vscode/
 .idea/
-*.suo
-*.user
-*.userosscache
-*.sln.docuser
+*.swp
+*.bak
+*.tmp
 
-# --- Frontend (React) ---
+# --- Frontend (React / Vite) ---
 node_modules/
+dist/
 build/
 .DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
+
+# --- Logs ---
+logs/
+*.log
+
+# --- OS ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini

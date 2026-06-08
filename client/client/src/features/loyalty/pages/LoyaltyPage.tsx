@@ -48,7 +48,7 @@ export default function LoyaltyPage() {
         <span className="section-eyebrow">Lealtad</span>
         <h1>Programa de puntos</h1>
         <p className="section-subtitle" style={{ marginTop: 'var(--space-2)' }}>
-          Ganas el 5% de cada compra en puntos. 100 puntos = 1 café gratis.
+          Ganas el 0.5% de cada compra en puntos. 100 puntos = 1 café gratis.
         </p>
       </div>
 

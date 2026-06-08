@@ -67,10 +67,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
 
       <Modal open={showAuthModal} onClose={() => setShowAuthModal(false)}>
         <Coffee size={40} style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-4)' }} />
-        <h3>¡Casi listo!</h3>
+        <h3>¿Te gusta lo que ves?</h3>
         <p>
-          Inicia sesión para acumular tus puntos de lealtad y completar tu pedido.
-          Cada compra te da el 5% en puntos.
+          Regístrate para acumular puntos y hacer tu pedido.
+          Cada compra te da el 0.5% en puntos de lealtad.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
           <Link

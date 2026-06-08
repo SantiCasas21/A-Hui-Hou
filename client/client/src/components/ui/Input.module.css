@@ -16,16 +16,19 @@
   border-radius: var(--radius-md);
   background-color: var(--color-surface);
   color: var(--color-text);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
   outline: none;
+  font-size: 0.9375rem;
 }
 
 .input:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px oklch(0.45 0.12 165 / 0.12);
 }
 
 .input::placeholder {
-  color: var(--color-latte);
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 .inputError {
